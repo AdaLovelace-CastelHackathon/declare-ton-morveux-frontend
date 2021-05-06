@@ -34,10 +34,14 @@ function AuthenticatePage({ setHasDeclared }) {
     e.preventDefault();
     const { signinUsername, signinPassword } = signinState;
     register(signinUsername, signinPassword)
-      .then((token) => {
-        console.log(`You are connected with token : ${token}`);
-        setHasDeclared(true);
-      })
+      .then(
+        (response) => {
+          console.log(`You are connected with token : ${response.token}`);
+          setHasDeclared(true);
+          console.log(response);
+        },
+        () => console.log("already taken")
+      )
       .catch((error) => alert(`Sorry, there was an error`));
   };
 

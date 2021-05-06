@@ -1,5 +1,6 @@
 import MenuHome from "./components/MenuHome";
 import AuthenticatePage from "./components/AuthenticatePage";
+import SearchSchool from "./components/SearchSchool";
 import "bootstrap/dist/css/bootstrap.css";
 import { useState } from "react";
 
@@ -13,7 +14,8 @@ function App() {
   return (
     <div className="contaier-fluid">
       <MenuHome />
-      <h1 className="text-center">Déclare ton Morveux</h1>
+      <h1 className="text-center mb-3">Déclare ton Morveux</h1>
+      <SearchSchool />
     </div>
   );
 }
