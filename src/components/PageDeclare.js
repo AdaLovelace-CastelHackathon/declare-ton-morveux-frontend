@@ -1,7 +1,7 @@
 import FormAddChild from "./FormAddChild";
 import ChildrenList from "./ChildrenList";
 
-function PageDeclare({ setHasDeclared, hasDeclared }) {
+function PageDeclare({ setHasDeclared, hasDeclared, schools }) {
   return (
     <div className="">
       <button
@@ -32,7 +32,7 @@ function PageDeclare({ setHasDeclared, hasDeclared }) {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <FormAddChild />
+              <FormAddChild schools={schools} />
             </div>
           </div>
         </div>

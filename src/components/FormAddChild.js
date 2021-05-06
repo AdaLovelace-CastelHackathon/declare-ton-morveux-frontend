@@ -1,7 +1,7 @@
 import SearchSchool from "./SearchSchool";
 import { useState } from "react";
 
-function FormAddChild() {
+function FormAddChild({ schools }) {
   const [child, setChild] = useState();
   const [school, setSchool] = useState();
 
@@ -33,6 +33,7 @@ function FormAddChild() {
           <SearchSchool
             passedId="add-child-shool-list"
             handleChangeSchool={handleChangeSchool}
+            schools={schools}
           />
         </div>
         <div className="form-check"></div>
