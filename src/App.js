@@ -40,6 +40,7 @@ function App() {
       <AuthenticatePage
         setHasDeclared={setHasDeclared}
         hasDeclared={hasDeclared}
+        setIsAuth={setIsAuth}
       />
     );
   }

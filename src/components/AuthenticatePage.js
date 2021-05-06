@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { register, login } from "../service/authentication";
+import { register, login, isAuthenticated } from "../service/authentication";
 
 import FormAuthenticate from "./FormAuthenticate";
 
-function AuthenticatePage({ setHasDeclared, hasDeclared }) {
+function AuthenticatePage({ setHasDeclared, hasDeclared, setIsAuth }) {
   const [signinState, setSigninState] = useState({
     signinUsername: "",
     signinPassword: "",
@@ -37,12 +37,12 @@ function AuthenticatePage({ setHasDeclared, hasDeclared }) {
       .then(
         (response) => {
           // console.log(`You are connected with token : ${response.token}`);
-          setHasDeclared(!hasDeclared);
           console.log(response);
         },
         () => console.log("already taken")
       )
       .catch((error) => alert(`Sorry, there was an error`));
+    isAuthenticated().then((response) => setIsAuth(response.data));
   };
 
   const handleSubmitLogin = (e) => {
@@ -51,12 +51,12 @@ function AuthenticatePage({ setHasDeclared, hasDeclared }) {
     login(loginUsername, loginPassword)
       .then((token) => {
         // console.log(`You are connected with token : ${token}`);
-        setHasDeclared(!hasDeclared);
       })
       .catch((error) => {
         alert(`Sorry, there was an error`);
         console.log(error);
       });
+    isAuthenticated().then((response) => setIsAuth(response.data));
   };
 
   const signSpec = {
@@ -77,6 +77,13 @@ function AuthenticatePage({ setHasDeclared, hasDeclared }) {
 
   return (
     <div className="container-fluid">
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => setHasDeclared(!hasDeclared)}
+      >
+        Retour
+      </button>
       <div className="row">
         <div className="col-sm-6">
           <FormAuthenticate
