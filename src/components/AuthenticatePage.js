@@ -3,7 +3,7 @@ import { register, login } from "../service/authentication";
 
 import FormAuthenticate from "./FormAuthenticate";
 
-function AuthenticatePage({ setHasDeclared }) {
+function AuthenticatePage({ setHasDeclared, hasDeclared }) {
   const [signinState, setSigninState] = useState({
     signinUsername: "",
     signinPassword: "",
@@ -37,7 +37,7 @@ function AuthenticatePage({ setHasDeclared }) {
       .then(
         (response) => {
           console.log(`You are connected with token : ${response.token}`);
-          setHasDeclared(true);
+          setHasDeclared(!hasDeclared);
           console.log(response);
         },
         () => console.log("already taken")
@@ -51,7 +51,7 @@ function AuthenticatePage({ setHasDeclared }) {
     login(loginUsername, loginPassword)
       .then((token) => {
         console.log(`You are connected with token : ${token}`);
-        setHasDeclared(true);
+        setHasDeclared(!hasDeclared);
       })
       .catch((error) => {
         alert(`Sorry, there was an error`);
