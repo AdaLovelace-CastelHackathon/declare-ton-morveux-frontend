@@ -4,4 +4,8 @@ function getSchoolList() {
   return api.get("/api/schools").then((response) => response);
 }
 
-export { getSchoolList };
+function getSchoolsInfo(id) {
+  return api.get(`api/schools/${id}`).then((response) => response);
+}
+
+export { getSchoolList, getSchoolsInfo };

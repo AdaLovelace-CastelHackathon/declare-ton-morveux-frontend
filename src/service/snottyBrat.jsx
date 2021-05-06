@@ -14,4 +14,10 @@ function addSnottyBrat({ firstName, lastName, schoolId }) {
     .then((response) => response);
 }
 
-export { allSnottyBrat, addSnottyBrat };
+function getMyBrats(parentId) {
+  return api
+    .get(`api/children/parent/${parentId}`)
+    .then((response) => response);
+}
+
+export { allSnottyBrat, addSnottyBrat, getMyBrats };

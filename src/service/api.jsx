@@ -18,7 +18,7 @@ const api = axios.create(defaultOptions);
 
 api.interceptors.request.use((config) => {
   const token = getToken();
-  console.log(`interceptors request with token ${token}`);
+  // console.log(`interceptors request with token ${token}`);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -27,7 +27,7 @@ api.interceptors.request.use((config) => {
 
 api.interceptors.response.use(
   (res) => {
-    console.log("interceptors response : ", res);
+    // console.log("interceptors response : ", res);
     return res;
   },
   (err) => {

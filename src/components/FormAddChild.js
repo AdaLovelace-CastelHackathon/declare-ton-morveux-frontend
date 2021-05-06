@@ -23,7 +23,7 @@ function FormAddChild({ schools }) {
     e.preventDefault();
     const { firstName, lastName } = child;
     const schoolObj = schools.find((e) => e.name.includes(school));
-    console.log(firstName, lastName, schoolObj.id);
+    // console.log(firstName, lastName, schoolObj.id);
     addSnottyBrat(firstName, lastName, schoolObj.id).then((response) =>
       console.log(response.data)
     );

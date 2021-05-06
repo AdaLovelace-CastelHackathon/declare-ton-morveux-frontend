@@ -1,7 +1,23 @@
 import FormAddChild from "./FormAddChild";
 import ChildrenList from "./ChildrenList";
 
+import { getMyInfo } from "../service/parent";
+import { getMyBrats } from "../service/snottyBrat";
+import { useState } from "react";
+
 function PageDeclare({ setHasDeclared, hasDeclared, schools }) {
+  // const [myId, setMyId] = useState();
+  const [myBrats, setMyBrats] = useState();
+
+  const handleClickSnottyBrats = () => {
+    // getMyInfo().then((response) => setMyId(response.data.id));
+    // getMyBrats(myId).then((response) => setMyBrats(response.data));
+
+    getMyInfo().then((response) =>
+      getMyBrats(response.data.id).then((response) => setMyBrats(response.data))
+    );
+  };
+
   return (
     <div className="">
       <button
@@ -45,6 +61,7 @@ function PageDeclare({ setHasDeclared, hasDeclared, schools }) {
               data-bs-target="#collapseTwo"
               aria-expanded="true"
               aria-controls="collapseTwo"
+              onClick={handleClickSnottyBrats}
             >
               Liste d'enfants
             </button>
@@ -59,6 +76,7 @@ function PageDeclare({ setHasDeclared, hasDeclared, schools }) {
               <ChildrenList
                 setHasDeclared={setHasDeclared}
                 hasDeclared={hasDeclared}
+                myBrats={myBrats}
               />
             </div>
           </div>

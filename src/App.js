@@ -6,7 +6,7 @@ import PageDeclare from "./components/PageDeclare";
 import { useEffect, useState } from "react";
 
 import { isAuthenticated } from "./service/authentication";
-import { getSchoolList } from "./service/school";
+import { getSchoolList, getSchoolsInfo } from "./service/school";
 import { allSnottyBrat } from "./service/snottyBrat";
 
 function App() {
@@ -15,17 +15,19 @@ function App() {
   const [schools, setSchools] = useState([]);
   const [school, setSchool] = useState();
   const [isAuth, setIsAuth] = useState();
+  const [schoolInfo, setSchoolInfo] = useState();
 
   const handleChangeSchool = (e) => {
-    const { id, value } = e.target;
-    setSchool(() => ({ [id]: value }));
-    console.log(e.target);
+    setSchool(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // sendToBack
-    console.log("school : ", school);
+    const schoolObj = schools.find((e) => e.name.includes(school));
+    getSchoolsInfo(schoolObj.id).then((response) =>
+      setSchoolInfo(response.data)
+    );
+    console.log(schoolInfo);
   };
 
   useEffect(() => {
@@ -84,6 +86,26 @@ function App() {
           Recherchez
         </button>
       </form>
+      {schoolInfo && schoolInfo.children.length > 0 ? (
+        <div className="mt-3 pt-3 border-top border-2">
+          <p>Liste de morveux inscrit à {schoolInfo.name}</p>
+          <small>
+            Vous pouvez les pointez du doigt et criez "
+            <b>Ah ! Les p'tits morveux !</b>"
+          </small>
+          <ul>
+            {schoolInfo.children.map((e, i) => (
+              <li key={i}>
+                {e.firstName} {e.lastName}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <div className="mt-3 pt-3 border-top border-2">
+          <p>Il n'y a pas de morveux à {schoolInfo.name}.</p>
+        </div>
+      )}
     </div>
   );
 }
