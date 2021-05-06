@@ -1,7 +1,7 @@
-import api from "axios";
+import api from "./api";
 
 function getSchoolList() {
-  api.get("/api/schools").then((response) => response);
+  return api.get("/api/schools").then((response) => response);
 }
 
 export { getSchoolList };

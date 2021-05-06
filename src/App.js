@@ -6,9 +6,8 @@ import PageDeclare from "./components/PageDeclare";
 import { useEffect, useState } from "react";
 
 import { isAuthenticated } from "./service/authentication";
-// import { getSchoolList } from "./service/school";
-// import { allSnottyBrat } from "./service/snottyBrat";
-import axios from "axios";
+import { getSchoolList } from "./service/school";
+import { allSnottyBrat } from "./service/snottyBrat";
 
 function App() {
   const [hasDeclared, setHasDeclared] = useState(false);
@@ -32,21 +31,8 @@ function App() {
   useEffect(() => {
     isAuthenticated().then((response) => setIsAuth(response.data));
 
-    // getSchoolList().then((response) => setSchools(response.data));
-    // allSnottyBrat().then((response) => setContaminated(response.data.sick));
-
-    const fetchData = async () => {
-      const snottyBrat = await axios
-        .get("https://declare-ton-morveux.herokuapp.com/api/children/sick")
-        .then((response) => response.data);
-      setContaminated(snottyBrat.sick);
-
-      const schools = await axios
-        .get("https://declare-ton-morveux.herokuapp.com/api/schools")
-        .then((response) => response.data);
-      setSchools(schools);
-    };
-    fetchData();
+    getSchoolList().then((response) => setSchools(response.data));
+    allSnottyBrat().then((response) => setContaminated(response.data.sick));
   }, []);
 
   if (hasDeclared && !isAuth) {
