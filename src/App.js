@@ -6,6 +6,8 @@ import PageDeclare from "./components/PageDeclare";
 import { useEffect, useState } from "react";
 
 import { isAuthenticated } from "./service/authentication";
+// import { allSnottyBrat } from "./service/snottyBrat";
+import axios from "axios";
 
 function App() {
   const [hasDeclared, setHasDeclared] = useState(false);
@@ -27,7 +29,15 @@ function App() {
 
   useEffect(() => {
     isAuthenticated().then((response) => setIsAuth(response.data));
-  });
+    // allSnottyBrat().then((response) => setContaminated(response.data.sick));
+    const fetchData = async () => {
+      const snottyBrat = await axios
+        .get("https://declare-ton-morveux.herokuapp.com/api/children/sick")
+        .then((response) => response.data);
+      setContaminated(snottyBrat.sick);
+    };
+    fetchData();
+  }, []);
 
   if (hasDeclared && !isAuth) {
     return (
