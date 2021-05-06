@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/main.c332c155.chunk.js",
-    "main.js.map": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/main.c332c155.chunk.js.map",
-    "runtime-main.js": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/runtime-main.f6b9dd98.js",
-    "runtime-main.js.map": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/runtime-main.f6b9dd98.js.map",
-    "static/js/2.ce4736e9.chunk.js": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/2.ce4736e9.chunk.js",
-    "static/js/2.ce4736e9.chunk.js.map": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/2.ce4736e9.chunk.js.map",
-    "static/js/3.c9fae46c.chunk.js": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/3.c9fae46c.chunk.js",
-    "static/js/3.c9fae46c.chunk.js.map": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/3.c9fae46c.chunk.js.map",
-    "index.html": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.ce4736e9.chunk.js.LICENSE.txt": "/adalovelacecastelhackathon.github.io/declare-ton-morveux-frontend/static/js/2.ce4736e9.chunk.js.LICENSE.txt"
+    "main.css": "/declare-ton-morveux-frontend/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/declare-ton-morveux-frontend/static/js/main.c332c155.chunk.js",
+    "main.js.map": "/declare-ton-morveux-frontend/static/js/main.c332c155.chunk.js.map",
+    "runtime-main.js": "/declare-ton-morveux-frontend/static/js/runtime-main.8889a67d.js",
+    "runtime-main.js.map": "/declare-ton-morveux-frontend/static/js/runtime-main.8889a67d.js.map",
+    "static/js/2.ce4736e9.chunk.js": "/declare-ton-morveux-frontend/static/js/2.ce4736e9.chunk.js",
+    "static/js/2.ce4736e9.chunk.js.map": "/declare-ton-morveux-frontend/static/js/2.ce4736e9.chunk.js.map",
+    "static/js/3.c9fae46c.chunk.js": "/declare-ton-morveux-frontend/static/js/3.c9fae46c.chunk.js",
+    "static/js/3.c9fae46c.chunk.js.map": "/declare-ton-morveux-frontend/static/js/3.c9fae46c.chunk.js.map",
+    "index.html": "/declare-ton-morveux-frontend/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/declare-ton-morveux-frontend/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.ce4736e9.chunk.js.LICENSE.txt": "/declare-ton-morveux-frontend/static/js/2.ce4736e9.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f6b9dd98.js",
+    "static/js/runtime-main.8889a67d.js",
     "static/js/2.ce4736e9.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
     "static/js/main.c332c155.chunk.js"
