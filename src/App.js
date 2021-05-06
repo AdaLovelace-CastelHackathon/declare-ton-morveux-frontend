@@ -1,21 +1,71 @@
 import MenuHome from "./components/MenuHome";
 import AuthenticatePage from "./components/AuthenticatePage";
 import SearchSchool from "./components/SearchSchool";
-import "bootstrap/dist/css/bootstrap.css";
-import { useState } from "react";
+import PageDeclare from "./components/PageDeclare";
+
+import { useEffect, useState } from "react";
+
+import { isAuthenticated } from "./service/authentication";
 
 function App() {
   const [hasDeclared, setHasDeclared] = useState(false);
+  const [contaminated, setContaminated] = useState(0);
+  const [school, setSchool] = useState();
+  const [isAuth, setIsAuth] = useState();
 
-  if (!hasDeclared) {
-    return <AuthenticatePage setHasDeclared={setHasDeclared} />;
+  const handleChangeSchool = (e) => {
+    const { id, value } = e.target;
+    setSchool(() => ({ [id]: value }));
+    console.log(e.target);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // sendToBack
+    console.log("school : ", school);
+  };
+
+  useEffect(() => {
+    isAuthenticated().then((response) => setIsAuth(response.data));
+  });
+
+  if (hasDeclared) {
+    return !isAuth ? (
+      <AuthenticatePage
+        setHasDeclared={setHasDeclared}
+        hasDeclared={hasDeclared}
+      />
+    ) : (
+      <PageDeclare />
+    );
   }
 
   return (
     <div className="contaier-fluid">
-      <MenuHome />
-      <h1 className="text-center mb-3">Déclare ton Morveux</h1>
-      <SearchSchool />
+      <MenuHome setHasDeclared={setHasDeclared} setIsAuth={setIsAuth} />
+      <h1 className="text-center mb-3">
+        Bienvenue sur <br /> Déclare ton Morveux
+      </h1>
+      <h2 className="text-center mb-3">
+        Le total de morveux est de : {contaminated}
+      </h2>
+      <form>
+        <div className="form-group text-left">
+          <SearchSchool
+            passedId="school-choice"
+            handleChangeSchool={handleChangeSchool}
+          />
+        </div>
+        {/* <div className="form-check"></div> */}
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={handleSubmit}
+        >
+          Recherchez
+        </button>
+      </form>
+      <PageDeclare />
     </div>
   );
 }

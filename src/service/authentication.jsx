@@ -34,5 +34,8 @@ function register(username, password) {
 function isAuthenticated() {
   return api.get(`isAuthenticated`).then((response) => response);
 }
+function loggingOut() {
+  return api.post(`logout`);
+}
 
-export { login, logout, register, isAuthenticated };
+export { login, logout, register, isAuthenticated, loggingOut };
