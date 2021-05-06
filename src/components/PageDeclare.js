@@ -1,10 +1,14 @@
 import FormAddChild from "./FormAddChild";
 import ChildrenList from "./ChildrenList";
 
-function PageDeclare() {
+function PageDeclare({ setHasDeclared, hasDeclared }) {
   return (
     <div className="">
-      <button type="button" className="btn btn-primary">
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => setHasDeclared(!hasDeclared)}
+      >
         Retour
       </button>
       <div className="accordion" id="accordionExample">
@@ -52,7 +56,10 @@ function PageDeclare() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <ChildrenList />
+              <ChildrenList
+                setHasDeclared={setHasDeclared}
+                hasDeclared={hasDeclared}
+              />
             </div>
           </div>
         </div>

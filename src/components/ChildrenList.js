@@ -1,4 +1,4 @@
-function ChildrenList() {
+function ChildrenList({ setHasDeclared, hasDeclared }) {
   const lists = ["toto", "bobby"];
   return (
     <>
@@ -15,7 +15,10 @@ function ChildrenList() {
           </label>
         </div>
       ))}
-      <button className="btn btn-primary">
+      <button
+        className="btn btn-primary"
+        onClick={() => setHasDeclared(!hasDeclared)}
+      >
         Mettre à jour l'état {lists.length > 1 ? "des enfants" : "de l'enfant"}
       </button>
     </>

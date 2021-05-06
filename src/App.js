@@ -29,20 +29,27 @@ function App() {
     isAuthenticated().then((response) => setIsAuth(response.data));
   });
 
-  if (hasDeclared) {
-    return !isAuth ? (
+  if (hasDeclared && !isAuth) {
+    return (
       <AuthenticatePage
         setHasDeclared={setHasDeclared}
         hasDeclared={hasDeclared}
       />
-    ) : (
-      <PageDeclare />
+    );
+  }
+  if (hasDeclared && isAuth) {
+    return (
+      <PageDeclare setHasDeclared={setHasDeclared} hasDeclared={hasDeclared} />
     );
   }
 
   return (
     <div className="contaier-fluid">
-      <MenuHome setHasDeclared={setHasDeclared} setIsAuth={setIsAuth} />
+      <MenuHome
+        setHasDeclared={setHasDeclared}
+        setIsAuth={setIsAuth}
+        isAuth={isAuth}
+      />
       <h1 className="text-center mb-3">
         Bienvenue sur <br /> Déclare ton Morveux
       </h1>
@@ -65,7 +72,6 @@ function App() {
           Recherchez
         </button>
       </form>
-      <PageDeclare />
     </div>
   );
 }

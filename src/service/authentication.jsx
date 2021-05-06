@@ -1,5 +1,5 @@
 import api from "./api";
-import { removeToken, setToken } from "./token";
+import { setToken } from "./token";
 
 function login(username, password) {
   return api
@@ -12,10 +12,6 @@ function login(username, password) {
       setToken(token);
       return token;
     });
-}
-
-function logout() {
-  removeToken();
 }
 
 function register(username, password) {
@@ -38,4 +34,4 @@ function loggingOut() {
   return api.post(`logout`);
 }
 
-export { login, logout, register, isAuthenticated, loggingOut };
+export { login, register, isAuthenticated, loggingOut };

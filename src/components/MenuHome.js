@@ -1,6 +1,10 @@
-import { isAuthenticated } from "../service/authentication";
+import { loggingOut } from "../service/authentication";
 
-function MenuHome({ hasDeclared, setHasDeclared, setIsAuth }) {
+function MenuHome({ hasDeclared, setHasDeclared, setIsAuth, isAuth }) {
+  const handleLogout = () => {
+    loggingOut().then((response) => setIsAuth(response.data));
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,15 +17,15 @@ function MenuHome({ hasDeclared, setHasDeclared, setIsAuth }) {
           >
             Déclarez un enfant
           </button>
-          <button
-            className="btn btn-outline-warning"
-            type="submit"
-            onClick={() =>
-              isAuthenticated().then((response) => setIsAuth(response.data))
-            }
-          >
-            Se déconnecter
-          </button>
+          {isAuth && (
+            <button
+              className="btn btn-outline-warning"
+              type="submit"
+              onClick={handleLogout}
+            >
+              Se déconnecter
+            </button>
+          )}
         </div>
       </nav>
     </>
