@@ -1,11 +1,9 @@
 import api from "./api";
 import { removeToken, setToken } from "./token";
 
-// TODO : add paths
-
 function login(username, password) {
   return api
-    .post(``, {
+    .post(`authenticate`, {
       username: username,
       password: password,
     })
@@ -22,7 +20,7 @@ function logout() {
 
 function register(username, password) {
   return api
-    .post(``, {
+    .post(`register`, {
       username: username,
       password: password,
     })
@@ -34,7 +32,7 @@ function register(username, password) {
 }
 
 function isAuthenticated() {
-  return api.get(``).then((response) => response);
+  return api.get(`isAuthenticated`).then((response) => response);
 }
 
-export { login, logout, register, isUserLoggedIn, isAuthenticated };
+export { login, logout, register, isAuthenticated };

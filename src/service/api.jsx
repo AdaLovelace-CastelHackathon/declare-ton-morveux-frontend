@@ -2,9 +2,9 @@ import axios from "axios";
 
 import { getToken, removeToken } from "./token";
 
-// TODO : add baseURL
+// TODO : Check Bearer token with nasri
 
-const REACT_APP_API_BASE_URL = "";
+const REACT_APP_API_BASE_URL = "https://declare-ton-morveux.herokuapp.com/";
 
 const defaultOptions = {
   baseURL: REACT_APP_API_BASE_URL,
