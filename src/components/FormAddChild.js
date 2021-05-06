@@ -1,33 +1,44 @@
 import SearchSchool from "./SearchSchool";
 import { useState } from "react";
 
+import { addSnottyBrat } from "../service/snottyBrat";
+
 function FormAddChild({ schools }) {
-  const [child, setChild] = useState();
+  const [child, setChild] = useState({ firstName: "", lastName: "" });
   const [school, setSchool] = useState();
 
   const handleChangeSchool = (e) => {
-    const { id, value } = e.target;
-    setSchool(() => ({ [id]: value }));
-    console.log(e.target);
+    setSchool(e.target.value);
   };
 
   const handleChangeInput = (e) => {
     const { id, value } = e.target;
-    setChild({ [id]: value });
+    setChild((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // sendToBack
-    console.log("child : ", child);
-    console.log("school : ", school);
+    const { firstName, lastName } = child;
+    const schoolObj = schools.find((e) => e.name.includes(school));
+    console.log(firstName, lastName, schoolObj.id);
+    addSnottyBrat(firstName, lastName, schoolObj.id).then((response) =>
+      console.log(response.data)
+    );
   };
 
   return (
     <>
       <form>
         <div className="form-group text-left">
-          <label>Entrez le prénom de votre enfant:</label>
-          <input id="childsName" onChange={handleChangeInput} />
+          <label>Prénom du morveux :</label>
+          <input id="firstName" onChange={handleChangeInput} />
+        </div>
+        <div className="form-group text-left">
+          <label>Nom de famille du morveux :</label>
+          <input id="lastName" onChange={handleChangeInput} />
         </div>
         <div className="form-group text-left">
           <SearchSchool

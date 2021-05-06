@@ -36,7 +36,7 @@ function AuthenticatePage({ setHasDeclared, hasDeclared }) {
     register(signinUsername, signinPassword)
       .then(
         (response) => {
-          console.log(`You are connected with token : ${response.token}`);
+          // console.log(`You are connected with token : ${response.token}`);
           setHasDeclared(!hasDeclared);
           console.log(response);
         },
@@ -50,7 +50,7 @@ function AuthenticatePage({ setHasDeclared, hasDeclared }) {
     const { loginUsername, loginPassword } = loginState;
     login(loginUsername, loginPassword)
       .then((token) => {
-        console.log(`You are connected with token : ${token}`);
+        // console.log(`You are connected with token : ${token}`);
         setHasDeclared(!hasDeclared);
       })
       .catch((error) => {
