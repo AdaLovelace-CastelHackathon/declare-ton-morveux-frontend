@@ -38,7 +38,7 @@ function PageDeclare({ setHasDeclared, hasDeclared, schools }) {
               aria-expanded="false"
               aria-controls="collapseOne"
             >
-              Ajouter un enfant
+              Ajouter un morveux
             </button>
           </h2>
           <div
@@ -63,7 +63,7 @@ function PageDeclare({ setHasDeclared, hasDeclared, schools }) {
               aria-controls="collapseTwo"
               onClick={handleClickSnottyBrats}
             >
-              Liste d'enfants
+              Liste de morveux
             </button>
           </h2>
           <div

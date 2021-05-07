@@ -24,10 +24,10 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const schoolObj = schools.find((e) => e.name.includes(school));
-    getSchoolsInfo(schoolObj.id).then((response) =>
-      setSchoolInfo(response.data)
-    );
-    console.log(schoolInfo);
+    schoolObj &&
+      getSchoolsInfo(schoolObj.id).then((response) =>
+        setSchoolInfo(response.data)
+      );
   };
 
   useEffect(() => {
@@ -86,26 +86,31 @@ function App() {
           Recherchez
         </button>
       </form>
-      {schoolInfo && schoolInfo.children.length > 0 ? (
-        <div className="mt-3 pt-3 border-top border-2">
-          <p>Liste de morveux inscrit à {schoolInfo.name}</p>
-          <small>
-            Vous pouvez les pointez du doigt et criez "
-            <b>Ah ! Les p'tits morveux !</b>"
-          </small>
-          <ul>
-            {schoolInfo.children.map((e, i) => (
-              <li key={i}>
-                {e.firstName} {e.lastName}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <div className="mt-3 pt-3 border-top border-2">
-          <p>Il n'y a pas de morveux à {schoolInfo.name}.</p>
-        </div>
-      )}
+      {schoolInfo &&
+        (schoolInfo.children.length > 0 ? (
+          <div className="mt-3 pt-3 border-top border-2">
+            <p>
+              Liste de morveux inscrit à l'{schoolInfo.name}
+              <br />
+              <small>
+                Vous pouvez les pointer du doigt et criez "
+                <b>Ah ! Les p'tits morveux !</b>"
+              </small>
+            </p>
+
+            <ul>
+              {schoolInfo.children.map((e, i) => (
+                <li key={i}>
+                  {e.firstName} {e.lastName}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <div className="mt-3 pt-3 border-top border-2">
+            <p>Il n'y a pas de morveux à {schoolInfo.name}.</p>
+          </div>
+        ))}
     </div>
   );
 }
