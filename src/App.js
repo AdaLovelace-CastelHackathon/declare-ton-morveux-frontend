@@ -57,7 +57,7 @@ function App() {
   }
 
   return (
-    <div className="contaier-fluid">
+    <div className="container-fluid">
       <MenuHome
         setHasDeclared={setHasDeclared}
         setIsAuth={setIsAuth}

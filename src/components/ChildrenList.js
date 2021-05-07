@@ -1,21 +1,27 @@
 import { useState } from "react";
 
+import { updateStatus } from "../service/snottyBrat";
+
 function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
-  const [state, setState] = useState();
+  const [state, setState] = useState({ contagious: false, sick: false });
+
   const handleChange = (e) => {
-    const { id, value } = e.target;
+    const { id, checked } = e.target;
 
     setState((prevState) => ({
       ...prevState,
-      [id]: value,
+      [id]: checked,
     }));
   };
 
   const handleClickSnottyStatus = (e) => {
     e.preventDefault();
-    const { isContagious, isSick } = state;
-    // setHasDeclared(!hasDeclared);
-    console.log(isContagious, isSick);
+    const { sick, contagious } = state;
+    updateStatus(sick, contagious, e.target.id).then((response) =>
+      console.log("my sick brat: ", response)
+    );
+
+    setHasDeclared(!hasDeclared);
   };
 
   return (
@@ -41,33 +47,37 @@ function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
                   />
                 </div>
               </div>
+
               <div className="mb-3">
-                <label className="form-check-label" htmlFor="isSick">
+                <label className="form-check-label" htmlFor="sick">
                   malade
                 </label>
                 <input
                   className="form-check-input"
                   type="checkbox"
                   name="malade"
-                  id="isSick"
-                  indeterminate
+                  id="sick"
+                  indeterminate={e.sick.toString()}
                   onChange={handleChange}
+                  defaultChecked={e.sick}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-check-label" htmlFor="isContagious">
+                <label className="form-check-label" htmlFor="contagious">
                   contagieux
                 </label>
                 <input
                   className="form-check-input"
                   type="checkbox"
                   name="contagieux"
-                  id="isContagious"
-                  indeterminate
+                  id="contagious"
+                  indeterminate={e.contagious.toString()}
                   onChange={handleChange}
+                  defaultChecked={e.contagious}
                 />
               </div>
               <button
+                id={e.id}
                 className="btn btn-primary mb-2"
                 onClick={handleClickSnottyStatus}
               >
