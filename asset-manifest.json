@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/declare-ton-morveux-frontend/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/declare-ton-morveux-frontend/static/js/main.0826b124.chunk.js",
-    "main.js.map": "/declare-ton-morveux-frontend/static/js/main.0826b124.chunk.js.map",
-    "runtime-main.js": "/declare-ton-morveux-frontend/static/js/runtime-main.8889a67d.js",
-    "runtime-main.js.map": "/declare-ton-morveux-frontend/static/js/runtime-main.8889a67d.js.map",
-    "static/js/2.03c762f6.chunk.js": "/declare-ton-morveux-frontend/static/js/2.03c762f6.chunk.js",
-    "static/js/2.03c762f6.chunk.js.map": "/declare-ton-morveux-frontend/static/js/2.03c762f6.chunk.js.map",
-    "static/js/3.c9fae46c.chunk.js": "/declare-ton-morveux-frontend/static/js/3.c9fae46c.chunk.js",
-    "static/js/3.c9fae46c.chunk.js.map": "/declare-ton-morveux-frontend/static/js/3.c9fae46c.chunk.js.map",
+    "main.js": "/declare-ton-morveux-frontend/static/js/main.d4e9a696.chunk.js",
+    "main.js.map": "/declare-ton-morveux-frontend/static/js/main.d4e9a696.chunk.js.map",
+    "runtime-main.js": "/declare-ton-morveux-frontend/static/js/runtime-main.861b9ed8.js",
+    "runtime-main.js.map": "/declare-ton-morveux-frontend/static/js/runtime-main.861b9ed8.js.map",
+    "static/js/2.ebeedb38.chunk.js": "/declare-ton-morveux-frontend/static/js/2.ebeedb38.chunk.js",
+    "static/js/2.ebeedb38.chunk.js.map": "/declare-ton-morveux-frontend/static/js/2.ebeedb38.chunk.js.map",
+    "static/js/3.77ab4474.chunk.js": "/declare-ton-morveux-frontend/static/js/3.77ab4474.chunk.js",
+    "static/js/3.77ab4474.chunk.js.map": "/declare-ton-morveux-frontend/static/js/3.77ab4474.chunk.js.map",
     "index.html": "/declare-ton-morveux-frontend/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/declare-ton-morveux-frontend/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.03c762f6.chunk.js.LICENSE.txt": "/declare-ton-morveux-frontend/static/js/2.03c762f6.chunk.js.LICENSE.txt"
+    "static/js/2.ebeedb38.chunk.js.LICENSE.txt": "/declare-ton-morveux-frontend/static/js/2.ebeedb38.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8889a67d.js",
-    "static/js/2.03c762f6.chunk.js",
+    "static/js/runtime-main.861b9ed8.js",
+    "static/js/2.ebeedb38.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.0826b124.chunk.js"
+    "static/js/main.d4e9a696.chunk.js"
   ]
 }
