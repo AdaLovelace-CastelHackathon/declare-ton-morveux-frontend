@@ -42,7 +42,9 @@ function AuthenticatePage({ setHasDeclared, hasDeclared, setIsAuth }) {
         () => console.log("already taken")
       )
       .catch((error) => alert(`Sorry, there was an error`));
-    isAuthenticated().then((response) => setIsAuth(response.data));
+    isAuthenticated()
+      .then((response) => response)
+      .then((data) => setIsAuth(data));
   };
 
   const handleSubmitLogin = (e) => {
@@ -56,7 +58,9 @@ function AuthenticatePage({ setHasDeclared, hasDeclared, setIsAuth }) {
         alert(`Sorry, there was an error`);
         console.log(error);
       });
-    isAuthenticated().then((response) => setIsAuth(response.data));
+    isAuthenticated()
+      .then((response) => response)
+      .then((data) => setIsAuth(data));
   };
 
   const signSpec = {
