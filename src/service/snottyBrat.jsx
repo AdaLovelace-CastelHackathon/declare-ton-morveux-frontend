@@ -22,14 +22,8 @@ function getMyBrats(parentId) {
     .then((response) => response);
 }
 
-function updateStatus(sick, contagious, id) {
-  return api
-    .put(`api/children/`, {
-      sick,
-      contagious,
-      id,
-    })
-    .then((response) => response);
+function updateStatus(obj) {
+  return api.put(`api/children/`, obj).then((response) => response);
 }
 
 export { allSnottyBrat, addSnottyBrat, getMyBrats, updateStatus };

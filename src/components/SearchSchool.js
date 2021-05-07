@@ -5,6 +5,7 @@ function SearchSchool({ handleChangeSchool, passedId, schools }) {
         Choisissez une école
       </label>
       <input
+        className="form-control"
         list="school-lists"
         id={passedId}
         name="school-choice"

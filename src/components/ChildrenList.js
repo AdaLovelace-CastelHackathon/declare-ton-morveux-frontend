@@ -1,25 +1,51 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { updateStatus } from "../service/snottyBrat";
 
 function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
-  const [state, setState] = useState({ contagious: false, sick: false });
+  const [state, setState] = useState([]);
+
+  useEffect(() => {
+    const lesBool = myBrats.map((e) => {
+      return [e.contagious, e.sick];
+    });
+    setState(lesBool);
+    console.log(lesBool);
+  }, []);
+
+  console.log(myBrats);
 
   const handleChange = (e) => {
-    const { id, checked } = e.target;
+    const { id, checked, name } = e.target;
+    const index = e.target.getAttribute("data-key");
+    const arr = state;
 
-    setState((prevState) => ({
-      ...prevState,
-      [id]: checked,
-    }));
+    if (id == "contagious") {
+      state[index] = [checked, state[index][1]];
+    } else {
+      state[index] = [state[index][0], checked];
+    }
+    console.log(state[index]);
+
+    console.log(e.target.getAttribute("data-key"));
+    console.log("handlechange", id, checked, name);
   };
 
   const handleClickSnottyStatus = (e) => {
     e.preventDefault();
-    const { sick, contagious } = state;
-    updateStatus(sick, contagious, e.target.id).then((response) =>
-      console.log("my sick brat: ", response)
-    );
+
+    const index = e.target.getAttribute("data-key");
+    const bools = state[index];
+
+    // const update = {
+    //   id: e.target.id,
+    //   contagious: bools[0],
+    //   sick: bools[1],
+    // };
+
+    // updateStatus(update).then((response) =>
+    //   console.log("my sick brat: ", response)
+    // );
 
     setHasDeclared(!hasDeclared);
   };
@@ -29,7 +55,11 @@ function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
       {myBrats && myBrats.length > 0 ? (
         <>
           {myBrats.map((e, i) => (
-            <form key={i} className="form-check border-bottom border-1">
+            <form
+              key={i}
+              data-key={i}
+              className="form-check border-bottom border-1"
+            >
               <div className="mb-3 row">
                 <label
                   htmlFor={e.firstName}
@@ -55,11 +85,12 @@ function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  name="malade"
+                  name={e.i}
                   id="sick"
                   indeterminate={e.sick.toString()}
                   onChange={handleChange}
                   defaultChecked={e.sick}
+                  data-key={i}
                 />
               </div>
               <div className="mb-3">
@@ -69,11 +100,12 @@ function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
                 <input
                   className="form-check-input"
                   type="checkbox"
-                  name="contagieux"
+                  name={e.i}
                   id="contagious"
                   indeterminate={e.contagious.toString()}
                   onChange={handleChange}
                   defaultChecked={e.contagious}
+                  data-key={i}
                 />
               </div>
               <button

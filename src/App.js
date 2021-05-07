@@ -7,7 +7,11 @@ import { useEffect, useState } from "react";
 
 import { isAuthenticated } from "./service/authentication";
 import { getSchoolList, getSchoolsInfo } from "./service/school";
-import { allSnottyBrat } from "./service/snottyBrat";
+// import { allSnottyBrat } from "./service/snottyBrat";
+import axios from "axios";
+
+import { getMyInfo } from "./service/parent";
+import { getMyBrats } from "./service/snottyBrat";
 
 function App() {
   const [hasDeclared, setHasDeclared] = useState(false);
@@ -16,6 +20,8 @@ function App() {
   const [school, setSchool] = useState();
   const [isAuth, setIsAuth] = useState(false);
   const [schoolInfo, setSchoolInfo] = useState();
+  const [myBrats, setMyBrats] = useState();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const handleChangeSchool = (e) => {
     setSchool(e.target.value);
@@ -31,11 +37,28 @@ function App() {
   };
 
   useEffect(() => {
+    getMyInfo().then((response) =>
+      getMyBrats(response.data.id).then((response) => {
+        setMyBrats(response.data);
+        setIsLoaded(true);
+      })
+    );
+
     isAuthenticated().then((response) => setIsAuth(response.data));
 
     getSchoolList().then((response) => setSchools(response.data));
-    allSnottyBrat().then((response) => setContaminated(response.data.sick));
-  }, [contaminated]);
+    // allSnottyBrat().then((response) => setContaminated(response.data.sick));
+    const fetchData = async () => {
+      const allSnots = await axios
+        .get("https://declare-ton-morveux.herokuapp.com/api/children/sick")
+        .then((response) => {
+          console.log(response.data);
+          return response.data;
+        });
+      setContaminated(allSnots);
+    };
+    fetchData();
+  }, []);
 
   if (hasDeclared && !isAuth) {
     return (
@@ -52,6 +75,8 @@ function App() {
         setHasDeclared={setHasDeclared}
         hasDeclared={hasDeclared}
         schools={schools}
+        myBrats={myBrats}
+        isLoaded={isLoaded}
       />
     );
   }
@@ -67,8 +92,11 @@ function App() {
         Bienvenue sur <br /> Déclare ton Morveux
       </h1>
       <h2 className="text-center mb-3">
-        Le total de morveux est de : {contaminated}
+        Le total de morveux est de : {contaminated.sick}
       </h2>
+      <h3 className="text-center mb-3">
+        Le total de morveux <b>contagieux</b> est de : {contaminated.contagious}
+      </h3>
       <form>
         <div className="form-group text-left">
           <SearchSchool
