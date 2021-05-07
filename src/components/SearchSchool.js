@@ -1,22 +1,9 @@
 function SearchSchool({ handleChangeSchool, passedId, schools }) {
-  // const schoolLists = [
-  //   {
-  //     school: "some school",
-  //     id: 0,
-  //   },
-  //   {
-  //     school: "the other one",
-  //     id: 1,
-  //   },
-  //   {
-  //     school: "the other other school",
-  //     id: 2,
-  //   },
-  // ];
-
   return (
     <>
-      <label htmlFor={passedId}>Choisissez une école :</label>
+      <label className="form-check-label" htmlFor={passedId}>
+        Choisissez une école
+      </label>
       <input
         list="school-lists"
         id={passedId}

@@ -35,7 +35,7 @@ function App() {
 
     getSchoolList().then((response) => setSchools(response.data));
     allSnottyBrat().then((response) => setContaminated(response.data.sick));
-  }, []);
+  }, [contaminated]);
 
   if (hasDeclared && !isAuth) {
     return (

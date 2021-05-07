@@ -32,12 +32,12 @@ function FormAddChild({ schools }) {
     <>
       <form>
         <div className="form-group text-left">
-          <label>Prénom du morveux :</label>
-          <input id="firstName" onChange={handleChangeInput} />
+          <label className="form-check-label">Prénom du morveux</label>
+          <input className="" id="firstName" onChange={handleChangeInput} />
         </div>
         <div className="form-group text-left">
-          <label>Nom de famille du morveux :</label>
-          <input id="lastName" onChange={handleChangeInput} />
+          <label className="form-check-label">Nom de famille du morveux</label>
+          <input className="" id="lastName" onChange={handleChangeInput} />
         </div>
         <div className="form-group text-left">
           <SearchSchool
