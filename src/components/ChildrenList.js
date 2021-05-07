@@ -1,6 +1,21 @@
+import { useState } from "react";
+
 function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
-  const handleClickSnottyStatus = () => {
-    setHasDeclared(!hasDeclared);
+  const [state, setState] = useState();
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+
+    setState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleClickSnottyStatus = (e) => {
+    e.preventDefault();
+    const { isContagious, isSick } = state;
+    // setHasDeclared(!hasDeclared);
+    console.log(isContagious, isSick);
   };
 
   return (
@@ -27,25 +42,29 @@ function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
                 </div>
               </div>
               <div className="mb-3">
-                <label className="form-check-label" htmlFor="malade">
+                <label className="form-check-label" htmlFor="isSick">
                   malade
                 </label>
                 <input
                   className="form-check-input"
                   type="checkbox"
                   name="malade"
-                  id="malade"
+                  id="isSick"
+                  indeterminate
+                  onChange={handleChange}
                 />
               </div>
               <div className="mb-3">
-                <label className="form-check-label" htmlFor="contagieux">
+                <label className="form-check-label" htmlFor="isContagious">
                   contagieux
                 </label>
                 <input
                   className="form-check-input"
                   type="checkbox"
                   name="contagieux"
-                  id="contagieux"
+                  id="isContagious"
+                  indeterminate
+                  onChange={handleChange}
                 />
               </div>
               <button

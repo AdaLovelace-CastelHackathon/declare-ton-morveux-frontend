@@ -12,7 +12,7 @@ function allSnottyBrat() {
       school: { id: schoolId },
     }
 */
-function addSnottyBrat({ obj }) {
+function addSnottyBrat(obj) {
   return api.post("api/children", obj).then((response) => response);
 }
 
