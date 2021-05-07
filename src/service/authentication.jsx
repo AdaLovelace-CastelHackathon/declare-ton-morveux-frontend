@@ -28,7 +28,7 @@ function register(username, password) {
 }
 
 function isAuthenticated() {
-  return api.get(`isAuthenticated`).then((response) => response);
+  return api.get(`isAuthenticated`);
 }
 function loggingOut() {
   return api.post(`logout`);

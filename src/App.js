@@ -14,7 +14,7 @@ function App() {
   const [contaminated, setContaminated] = useState(0);
   const [schools, setSchools] = useState([]);
   const [school, setSchool] = useState();
-  const [isAuth, setIsAuth] = useState();
+  const [isAuth, setIsAuth] = useState(false);
   const [schoolInfo, setSchoolInfo] = useState();
 
   const handleChangeSchool = (e) => {

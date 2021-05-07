@@ -53,14 +53,14 @@ function AuthenticatePage({ setHasDeclared, hasDeclared, setIsAuth }) {
     login(loginUsername, loginPassword)
       .then((token) => {
         // console.log(`You are connected with token : ${token}`);
+        isAuthenticated().then((response) => {
+          setIsAuth(response.data);
+        });
       })
       .catch((error) => {
         alert(`Sorry, there was an error`);
         console.log(error);
       });
-    isAuthenticated().then((response) => {
-      setIsAuth(response.data);
-    });
   };
 
   const signSpec = {
