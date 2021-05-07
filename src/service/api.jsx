@@ -11,7 +11,6 @@ const defaultOptions = {
   method: "get",
   headers: {
     "Content-Type": "application/json",
-    "Access-Control-Allow-Origin": "*",
   },
 };
 const api = axios.create(defaultOptions);

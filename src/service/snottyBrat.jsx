@@ -4,14 +4,16 @@ function allSnottyBrat() {
   return api.get("api/children/sick").then((response) => response);
 }
 
-function addSnottyBrat({ firstName, lastName, schoolId }) {
-  return api
-    .post("api/children", {
-      firstName,
-      lastName,
+// firstName, lastName, schoolId
+/*
+{
+      firstName: firstName,
+      lastName: lastName,
       school: { id: schoolId },
-    })
-    .then((response) => response);
+    }
+*/
+function addSnottyBrat({ obj }) {
+  return api.post("api/children", obj).then((response) => response);
 }
 
 function getMyBrats(parentId) {
