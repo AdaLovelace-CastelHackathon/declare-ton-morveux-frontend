@@ -6,15 +6,45 @@ function ChildrenList({ setHasDeclared, hasDeclared, myBrats }) {
         <>
           {myBrats.map((e, i) => (
             <div key={i} className="form-check">
-              <input
-                className="form-check-input"
-                type="radio"
-                name="child"
-                id={e}
-              />
-              <label className="form-check-label" htmlFor={e.firstName}>
-                {e.firstName}
-              </label>
+              <div className="mb-3 row">
+                <label
+                  htmlFor={e.firstName}
+                  className="col-sm-2 col-form-label"
+                >
+                  Le prénom du morveux
+                </label>
+                <div className="col-sm-10">
+                  <input
+                    type="text"
+                    readonly
+                    className="form-control-plaintext"
+                    id={e.firstName}
+                    value={e.firstName}
+                  />
+                </div>
+              </div>
+              <div className="mb-3 row">
+                <label className="form-check-label" htmlFor="malade">
+                  malade
+                </label>
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="child"
+                  id="malade"
+                />
+              </div>
+              <div className="mb-3 row">
+                <label className="form-check-label" htmlFor="contagieux">
+                  contagieux
+                </label>
+                <input
+                  className="form-check-input"
+                  type="radio"
+                  name="child"
+                  id="contagieux"
+                />
+              </div>
             </div>
           ))}
           <button
