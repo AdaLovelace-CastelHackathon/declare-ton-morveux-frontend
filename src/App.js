@@ -36,14 +36,16 @@ function App() {
       );
   };
 
-  useEffect(() => {
+  const updateBrats = () => {
     getMyInfo().then((response) =>
       getMyBrats(response.data.id).then((response) => {
         setMyBrats(response.data);
-        setIsLoaded(true);
       })
     );
+  };
 
+  useEffect(() => {
+    updateBrats();
     isAuthenticated().then((response) => setIsAuth(response.data));
 
     getSchoolList().then((response) => setSchools(response.data));
@@ -72,6 +74,7 @@ function App() {
   if (hasDeclared && isAuth) {
     return (
       <PageDeclare
+        updateBrats={updateBrats}
         setHasDeclared={setHasDeclared}
         hasDeclared={hasDeclared}
         schools={schools}

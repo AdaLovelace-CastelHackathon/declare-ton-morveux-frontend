@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { addSnottyBrat } from "../service/snottyBrat";
 
-function FormAddChild({ schools }) {
+function FormAddChild({ schools, updateBrats }) {
   const [child, setChild] = useState({ firstName: "", lastName: "" });
   const [school, setSchool] = useState();
 
@@ -26,6 +26,7 @@ function FormAddChild({ schools }) {
     const bratObj = { firstName, lastName, school: { id: schoolObj.id } };
     console.log(bratObj);
     addSnottyBrat(bratObj).then((response) => console.log(response.data));
+    updateBrats();
   };
 
   return (

@@ -10,7 +10,7 @@ function PageDeclare({
   hasDeclared,
   schools,
   myBrats,
-  isLoaded,
+  updateBrats,
 }) {
   // const [myBrats, setMyBrats] = useState();
 
@@ -50,7 +50,7 @@ function PageDeclare({
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <FormAddChild schools={schools} />
+              <FormAddChild updateBrats={updateBrats} schools={schools} />
             </div>
           </div>
         </div>
@@ -75,13 +75,11 @@ function PageDeclare({
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              {isLoaded && (
-                <ChildrenList
-                  setHasDeclared={setHasDeclared}
-                  hasDeclared={hasDeclared}
-                  myBrats={myBrats}
-                />
-              )}
+              <ChildrenList
+                setHasDeclared={setHasDeclared}
+                hasDeclared={hasDeclared}
+                myBrats={myBrats}
+              />
             </div>
           </div>
         </div>
